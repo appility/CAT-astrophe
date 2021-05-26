@@ -13,10 +13,10 @@ function returnPromise(data) {
 }
 
 export function getImages(params) {
-  let cache = Images.get();
-  if (cache) {
-    return returnPromise(cache);
-  }
+  // let cache = Images.get();
+  // if (cache) {
+  //   return returnPromise(cache);
+  // }
   return API.get(`${process.env.REACT_APP_CAT_API_ENDPOINT}/images`, params)
     .then((response) => {
       if (!response || response.status !== 200) {
