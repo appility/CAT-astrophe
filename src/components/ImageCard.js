@@ -25,7 +25,7 @@ export default function Card(props) {
       let { id } = props;
       let user_id = User.getUUID();
       let result = Votes.hasVotedByImageId(id, user_id);
-      return result ? result : false;
+      return ( result && result.length ) ? true : false;
     };
     setInitialValues();
   }, [props]);
@@ -37,13 +37,14 @@ export default function Card(props) {
       image_id: id,
       value: value,
     };
-    voteForImage(params);
+    voteForImage(params)
     updateCount(vote);
   };
 
   const updateCount = (vote) => {
     let increment = vote === "UP" ? 1 : -1;
     setVoteCount(voteCount+increment)
+    setHasVoted(true)
   }
 
   return (
@@ -76,7 +77,9 @@ export default function Card(props) {
             </p>
           </div>
         )}
-        <Vote id={props.id} onVote={handleVote} />
+        { !hasVoted && (
+          <Vote id={props.id} onVote={handleVote} />
+        )}
       </div>
     </>
   );

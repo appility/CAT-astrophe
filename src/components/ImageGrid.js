@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import ImageCard from "@/components/ImageCard";
 import Image from "@/components/Image";
 
 export default function ImageGrid(props) {
@@ -9,13 +9,13 @@ export default function ImageGrid(props) {
         {props.data.map((image) => (
           <li key={image.url} className="relative">
             <div className="group block w-full h-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <Card {...props} {...image}>
+              <ImageCard {...props} {...image}>
                 <Image
                   src={image.url}
                   alt={image.original_filename} 
                   className="object-fit pointer-events-none mx-auto"
                 />
-              </Card>
+              </ImageCard>
             </div>
           </li>
         ))}

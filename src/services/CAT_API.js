@@ -8,9 +8,6 @@ function returnPromise(data) {
   return new Promise(function (resolve, reject) {
     if (data) {
       resolve(data);
-    } else {
-      var reason = new Error("No cache");
-      reject(reason);
     }
   });
 }
@@ -92,7 +89,7 @@ export function removeImageFromFavourites(favourite_id) {
 }
 
 export function voteForImage(params) {
-  params["sub_id"] = process.env.REACT_APP_CLIENT_APP_ID;
+  params["sub_id"] = User.getUUID();
   return API.post(`${process.env.REACT_APP_CAT_API_ENDPOINT}/votes`, params)
     .then((response) => {
       let { id, message } = response;
@@ -100,6 +97,8 @@ export function voteForImage(params) {
         let item = {
           id: id,
           image_id: params["image_id"],
+          sub_id: params["sub_id"],
+          value: params["value"]
         };
         Votes.addVote(item);
       }

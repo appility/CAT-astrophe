@@ -7,7 +7,6 @@ import {
   getImages,
   getVotes,
   getFavourites,
-  voteForImage,
 } from "@/services/CAT_API.js";
 
 const Home = (props) => {
@@ -19,7 +18,7 @@ const Home = (props) => {
 
   useEffect(() => {
     let params = { limit: 20, page: 0, order: "Desc" };
-    return getImages(params)
+    getImages(params)
       .then((response) => {
         setData(response);
         setIsLoaded(true);
@@ -30,7 +29,7 @@ const Home = (props) => {
   }, []);
 
   useEffect(() => {
-    return getVotes()
+    getVotes()
       .then((response) => {
         setVotes(response);
       })
@@ -40,7 +39,7 @@ const Home = (props) => {
   }, []);
 
   useEffect(() => {
-    return getFavourites()
+    getFavourites()
       .then((response) => {
         setFavourites(response);
       })
@@ -48,15 +47,6 @@ const Home = (props) => {
         // fail silently
       });
   }, []);
-
-  // const handleVote = (image_id, vote) => {
-  //   let value = vote === "UP" ? 1 : 0;
-  //   let params = {
-  //     image_id: image_id,
-  //     value: value,
-  //   };
-  //   voteForImage(params);
-  // };
 
   return (
     <>
