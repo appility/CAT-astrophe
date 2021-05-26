@@ -1,5 +1,8 @@
 # Catastrophe
 
+The Cat API - Cats as a Service.
+[https://thecatapi.com/](https://thecatapi.com/) 
+
 # Getting Started 
 
 In the project directory, you can run:
