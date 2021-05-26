@@ -1,6 +1,6 @@
 # Catastrophe
 
-The Cat API - Cats as a Service.
+A React SPA that uses "The Cat API"
 [https://thecatapi.com/](https://thecatapi.com/) 
 
 # Getting Started 
